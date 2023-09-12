@@ -4,19 +4,22 @@ using UnityEngine.UI;
 public class VisibilityPosition : MonoBehaviour
 {
     public CanvasGroup target;
-    public float spawnPosition = -10f;
-    public float destroyPosition = 100f; // The position at which the object should be destroyed
+    public float destroyPosition = 100f;
 
     private void Update()
     {
-        if (target.transform.position.z <= spawnPosition)
+        // Calculate the distance between the player and the notification along the Z-axis
+        float distance = Mathf.Abs(target.transform.position.z - transform.position.z);
+
+        if (distance >= destroyPosition)
         {
-            target.alpha = 1; // Destroy the object
+            target.alpha = 0; // Make the object invisible
+            Destroy(gameObject); // Destroy the GameObject this script is attached to
         }
-        
-        if (target.transform.position.z <= destroyPosition)
+        else
         {
-            target.alpha = 0; // Destroy the object
+            // Object is within the desired distance, so set visibility to 1
+            target.alpha = 1; // Make the object visible
         }
     }
 }

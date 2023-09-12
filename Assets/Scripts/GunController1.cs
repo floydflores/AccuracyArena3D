@@ -1,70 +1,108 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GunController1 : MonoBehaviour
 {
-    public GameObject projectilePrefab;
-    public float projectileSpeed = 10f;
-    public float fireRate = 0.5f;
-    public int maxAmmo = 30; // Change this value to modify the weapon's capacity.
-    public float reloadTime = 1.5f;
+    [Header("Shooting")]
+    public Transform muzzle;            // The point where bullets will be fired from
+    public GameObject bulletPrefab;     // Prefab of the bullet GameObject
+    public float fireRate = 0.1f;       // Time between shots
+    public int maxAmmo = 10;            // Maximum ammo capacity
+    public float bulletForce = 10f;     // Force to apply to the bullet
+    public int damage = 22;
 
-    private int currentAmmo;
-    private bool isReloading;
-    private bool hasRoundChambered; // New variable to track if there is a chambered round.
-    private float nextFireTime;
+    [Header("Reloading")]
+    private int currentAmmo; // Current ammo count
+    private bool canShoot = true; // Flag to control shooting rate
+    
+    private bool isReloading; // Determines if player is reloading
+    public float reloadTime = 1.5f; // Amount of time to reload
 
+    public bool canChamber = false; // Determines if the weapon can chamber a round
+
+    [Header("Effects")]
     public ParticleSystem muzzleFlash;
+    public ParticleSystem bulletCasing;
+    public AudioSource audioSource;
+    public AudioClip shootingSoundEffect;
+    public TextMeshProUGUI countText;
 
-    void Start()
+    // Start is called before update
+    private void Start()
     {
         currentAmmo = maxAmmo;
-        hasRoundChambered = false; // Start without a chambered round.
+        audioSource = GetComponent<AudioSource>();
+        countText.text = currentAmmo.ToString();
     }
 
-    void Update()
+    // Update is called once per frame
+    private void Update()
     {
         if (isReloading)
             return;
-
-        // Check if there is any ammo left or a chambered round to fire.
-        if (currentAmmo <= 0 && !hasRoundChambered)
+        
+        if (Input.GetButtonDown("Fire1") && canShoot && currentAmmo > 0)
         {
-            // Initiate reloading when there's no ammo and no chambered round.
-            Reload();
-            return;
+            StartCoroutine(Shoot());
         }
 
-        // Check if the player can fire (has ammo or a chambered round) and enough time has passed since the last shot.
-        if ((Input.GetButtonDown("Fire1") || (Input.GetButton("Fire1") && hasRoundChambered)) && Time.time >= nextFireTime)
+        if (Input.GetButtonDown("Fire3") && currentAmmo < maxAmmo)
         {
-            Fire();
-            nextFireTime = Time.time + fireRate;
-            Debug.Log("Firing!");
+            Reload();
         }
     }
 
-    void Fire()
+    // Shoot the weapon
+    private IEnumerator Shoot()
     {
-        if (hasRoundChambered)
-        {
-            // Firing consumes the chambered round.
-            hasRoundChambered = false;
-
-            // If you want to display the chambered round visually, you can add relevant UI/visuals here.
-
-            GameObject newProjectile = Instantiate(projectilePrefab, transform.position, transform.rotation);
-            Rigidbody projectileRigidbody = newProjectile.GetComponent<Rigidbody>();
-            projectileRigidbody.velocity = transform.forward * projectileSpeed;
-        }
+        canShoot = false;
+        currentAmmo--;
+        countText.text = currentAmmo.ToString();
 
         if (muzzleFlash != null)
         {
             muzzleFlash.Play();
         }
+
+        if (bulletCasing != null)
+        {
+            bulletCasing.Play();
+        }
+
+        if (shootingSoundEffect != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(shootingSoundEffect);
+        }
+
+        // Instantiate the bullet prefab at the muzzle position and rotation
+        GameObject bullet = Instantiate(bulletPrefab, muzzle.position, muzzle.rotation);
+        
+        // Apply force to the bullet in the forward direction
+        Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
+        bulletRb.velocity = muzzle.forward * bulletForce;
+
+        // Raycast to detect hits
+       RaycastHit hit;
+        if (Physics.Raycast(muzzle.position, muzzle.forward, out hit))
+        {
+            Debug.Log("Hit: " + hit.transform.name);
+            // You can apply damage to the hit object or trigger other effects here
+
+            // Check if the object has a script/component to take damage
+            Health healthController = hit.transform.GetComponent<Health>();
+            if (healthController != null)
+            {
+            // Apply damage to the hit object
+            healthController.TakeDamage(damage);
+            }
+        }
+
+        yield return new WaitForSeconds(fireRate);
+        canShoot = true;
     }
 
+    // Reload the weapon
     void Reload()
     {
         if (isReloading)
@@ -83,21 +121,19 @@ public class GunController1 : MonoBehaviour
     {
         yield return new WaitForSeconds(reloadTime);
 
-        // Calculate how many rounds need to be reloaded.
-        int roundsToReload = maxAmmo - currentAmmo;
+        // Reset the current ammo to max ammo
+        currentAmmo = maxAmmo;
 
-        // If there are more rounds than needed for the chamber, set the chambered round and reduce the ammo count accordingly.
-        if (roundsToReload > 1)
+        // Chamber an extra round if the ammo count > 0
+        if (canChamber && currentAmmo > 0)
         {
-            currentAmmo += roundsToReload - 1;
-            hasRoundChambered = true;
-        }
-        else if (roundsToReload == 1)
-        {
-            hasRoundChambered = true;
+            currentAmmo += 1;
         }
 
+        // Reset the reloading flag
         isReloading = false;
-        Debug.Log("Reloaded!");
+        countText.text = currentAmmo.ToString();
+
+        Debug.Log("Reload complete. Current ammo: " + currentAmmo);
     }
 }

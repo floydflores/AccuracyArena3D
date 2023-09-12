@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenuUI;
+    public GameObject player;
 
     private bool isPaused = false;
 
@@ -31,6 +32,8 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     void Pause()
@@ -39,6 +42,8 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         isPaused = true;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     public void LoadMenu()
@@ -59,9 +64,4 @@ public class PauseMenu : MonoBehaviour
          // Implement the logic to quit the game, if needed.
     }
 
-    public void QuitTheGame()
-    {
-        Debug.Log("Quitting Game");
-        Application.Quit();
-    }
 }

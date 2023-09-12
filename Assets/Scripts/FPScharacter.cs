@@ -6,9 +6,11 @@ public class FPScharacter : MonoBehaviour
 {
     #region Variables
     
-    public float moveSpeed = 5f;
+    public float moveSpeed = 12f;
     public float jumpForce = 10f;
     public float gravity = 20f;
+    
+    public bool canSprint = false;
 
     public CharacterController controller;
     public Vector3 moveDirection = Vector3.zero;
@@ -19,6 +21,7 @@ public class FPScharacter : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
+
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
@@ -49,5 +52,16 @@ public class FPScharacter : MonoBehaviour
         }
 
         controller.Move(moveDirection * Time.deltaTime);
+
+        if (canSprint && Input.GetButton("Sprint"))
+        {
+            moveSpeed = 17;
+            Debug.Log("Sprinting");
+        }
+
+        else
+        {
+        moveSpeed = 12;
+        }
     }
 }

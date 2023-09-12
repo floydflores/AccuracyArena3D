@@ -6,7 +6,6 @@ public class CharacterCrouch : MonoBehaviour
 {
     public float crouchScale = 0.5f; // Adjust this value to determine how much the character should crouch (0.5f means half the original size)
 
-    public KeyCode crouchKey = KeyCode.LeftControl;
     private Vector3 originalScale;
     private Transform pivotPoint;
 
@@ -19,11 +18,11 @@ public class CharacterCrouch : MonoBehaviour
     private void Update()
     {
         // Check for crouch input (you can replace "Crouch" with your own input axis or button)
-        if (Input.GetButtonDown("crouchKey"))
+        if (Input.GetButtonDown("Fire2"))
         {
             Crouch();
         }
-        else if (Input.GetButtonUp("crouchKey"))
+        else if (Input.GetButtonUp("Fire2"))
         {
             UnCrouch();
         }
