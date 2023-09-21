@@ -785,6 +785,7 @@ MonoBehaviour:
   reloadTime: 2.2
   canChamber: 0
   muzzleFlash: {fileID: 780911544159080437}
+  bulletCasing: {fileID: 0}
   audioSource: {fileID: 3655717069458222661}
   shootingSoundEffect: {fileID: 8300000, guid: 57878d7c2e72b465bbd9812d4e5a81fd, type: 3}
   countText: {fileID: 8085718758568564848}

@@ -194,7 +194,7 @@ MonoBehaviour:
   maxAmmo: 32
   bulletForce: 330
   damage: 20
-  reloadTime: 2
+  reloadTime: 2.2
   canChamber: 0
   muzzleFlash: {fileID: 4134829368447046970}
   bulletCasing: {fileID: 2427570549643089196}

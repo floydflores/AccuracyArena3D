@@ -17,6 +17,10 @@ ScriptsOnlyBuild:
     - Sound
     - VisibilityPosition
     - ZombieControl
+    Unity.AI.Navigation.Editor.dll:
+    - Unity.AI.Navigation.Editor.NavMeshAssetManager
+    Unity.AI.Navigation.dll:
+    - Unity.AI.Navigation.NavMeshSurface
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
     Unity.TextMeshPro:
@@ -103,18 +107,6 @@ ScriptsOnlyBuild:
   - assembly: Assembly-CSharp
     fullTypeName: GameOverMenu
     methodName: Retry
-  - assembly: Assembly-CSharp
-    fullTypeName: PauseMenu
-    methodName: LoadMenu
-  - assembly: Assembly-CSharp
-    fullTypeName: PauseMenu
-    methodName: LeaveGame
-  - assembly: Assembly-CSharp
-    fullTypeName: PauseMenu
-    methodName: Resume
-  - assembly: Assembly-CSharp
-    fullTypeName: PauseMenu
-    methodName: SkipGame
   sceneClasses:
     Assets/Scenes/New Screen.unity:
     - Class: 1
@@ -273,6 +265,8 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 5110}
     - Class: 114
+      Script: {instanceID: 5256}
+    - Class: 114
       Script: {instanceID: 5794}
     - Class: 114
       Script: {instanceID: 6778}
@@ -283,7 +277,7 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 7712}
     - Class: 114
-      Script: {instanceID: 7900}
+      Script: {instanceID: 7898}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -400,7 +394,7 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 7846}
     - Class: 114
-      Script: {instanceID: 7900}
+      Script: {instanceID: 7898}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
