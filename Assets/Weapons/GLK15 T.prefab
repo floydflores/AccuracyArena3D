@@ -344,12 +344,13 @@ MonoBehaviour:
   muzzle: {fileID: 3939414807403776517}
   bulletPrefab: {fileID: 1174432046271662406, guid: b5c5cbe719d1846f396153466d811bb2, type: 3}
   fireRate: 0.08
-  maxAmmo: 16
+  maxAmmo: 15
   bulletForce: 300
   damage: 24
   reloadTime: 1.4
   canChamber: 0
   muzzleFlash: {fileID: 8339772704731767126, guid: c45c4dddb5ffc4515aa54f0e855b8671, type: 3}
+  bulletCasing: {fileID: 0}
   audioSource: {fileID: 3628751276267462851}
   shootingSoundEffect: {fileID: 8300000, guid: 57878d7c2e72b465bbd9812d4e5a81fd, type: 3}
   countText: {fileID: 1761265480572336787}
