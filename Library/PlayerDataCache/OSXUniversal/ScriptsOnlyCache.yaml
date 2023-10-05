@@ -2,6 +2,7 @@ ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
     - CharacterCrouch
+    - CheckpointN
     - DestroyPosition
     - EndGame
     - FPScamera
@@ -14,11 +15,7 @@ ScriptsOnlyBuild:
     - MoveUp
     - PauseMenu
     - Pickup
-    - Sound
-    - VisibilityPosition
     - ZombieControl
-    Unity.AI.Navigation.Editor.dll:
-    - Unity.AI.Navigation.Editor.NavMeshAssetManager
     Unity.AI.Navigation.dll:
     - Unity.AI.Navigation.NavMeshSurface
     Unity.Rider.Editor.dll:
@@ -152,7 +149,7 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1552}
+      Script: {instanceID: 1550}
     - Class: 114
       Script: {instanceID: 1596}
     - Class: 114
@@ -166,19 +163,19 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 3100}
     - Class: 114
-      Script: {instanceID: 3994}
+      Script: {instanceID: 3996}
     - Class: 114
-      Script: {instanceID: 4106}
+      Script: {instanceID: 4108}
     - Class: 114
-      Script: {instanceID: 4358}
+      Script: {instanceID: 4360}
     - Class: 114
-      Script: {instanceID: 5072}
+      Script: {instanceID: 5074}
     - Class: 114
-      Script: {instanceID: 5794}
+      Script: {instanceID: 5796}
     - Class: 114
-      Script: {instanceID: 6112}
+      Script: {instanceID: 6114}
     - Class: 114
-      Script: {instanceID: 7846}
+      Script: {instanceID: 7848}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -243,7 +240,7 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1552}
+      Script: {instanceID: 1550}
     - Class: 114
       Script: {instanceID: 1596}
     - Class: 114
@@ -253,31 +250,29 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 3100}
     - Class: 114
-      Script: {instanceID: 3290}
+      Script: {instanceID: 3996}
     - Class: 114
-      Script: {instanceID: 3994}
+      Script: {instanceID: 4026}
     - Class: 114
-      Script: {instanceID: 4024}
+      Script: {instanceID: 5040}
     - Class: 114
-      Script: {instanceID: 5038}
+      Script: {instanceID: 5074}
     - Class: 114
-      Script: {instanceID: 5072}
+      Script: {instanceID: 5112}
     - Class: 114
-      Script: {instanceID: 5110}
+      Script: {instanceID: 5258}
     - Class: 114
-      Script: {instanceID: 5256}
+      Script: {instanceID: 5796}
     - Class: 114
-      Script: {instanceID: 5794}
+      Script: {instanceID: 6780}
     - Class: 114
-      Script: {instanceID: 6778}
+      Script: {instanceID: 6960}
     - Class: 114
-      Script: {instanceID: 6958}
+      Script: {instanceID: 7056}
     - Class: 114
-      Script: {instanceID: 7054}
+      Script: {instanceID: 7714}
     - Class: 114
-      Script: {instanceID: 7712}
-    - Class: 114
-      Script: {instanceID: 7898}
+      Script: {instanceID: 7900}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -305,6 +300,10 @@ ScriptsOnlyBuild:
     - Class: 223
       Script: {instanceID: 0}
     - Class: 224
+      Script: {instanceID: 0}
+    - Class: 225
+      Script: {instanceID: 0}
+    - Class: 238
       Script: {instanceID: 0}
     Assets/Scenes/Tutorial.unity:
     - Class: 1
@@ -352,9 +351,7 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1552}
-    - Class: 114
-      Script: {instanceID: 1554}
+      Script: {instanceID: 1550}
     - Class: 114
       Script: {instanceID: 1596}
     - Class: 114
@@ -366,35 +363,35 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 3100}
     - Class: 114
-      Script: {instanceID: 3290}
+      Script: {instanceID: 3270}
     - Class: 114
-      Script: {instanceID: 3736}
+      Script: {instanceID: 3738}
     - Class: 114
-      Script: {instanceID: 3994}
+      Script: {instanceID: 3996}
     - Class: 114
-      Script: {instanceID: 4024}
+      Script: {instanceID: 4026}
     - Class: 114
-      Script: {instanceID: 4582}
+      Script: {instanceID: 4584}
     - Class: 114
-      Script: {instanceID: 4834}
+      Script: {instanceID: 4836}
     - Class: 114
-      Script: {instanceID: 5072}
+      Script: {instanceID: 5074}
     - Class: 114
-      Script: {instanceID: 5110}
+      Script: {instanceID: 5112}
     - Class: 114
-      Script: {instanceID: 5794}
+      Script: {instanceID: 5796}
     - Class: 114
-      Script: {instanceID: 6112}
+      Script: {instanceID: 6114}
     - Class: 114
-      Script: {instanceID: 6958}
+      Script: {instanceID: 6960}
     - Class: 114
-      Script: {instanceID: 7054}
+      Script: {instanceID: 7056}
     - Class: 114
-      Script: {instanceID: 7712}
+      Script: {instanceID: 7714}
     - Class: 114
-      Script: {instanceID: 7846}
+      Script: {instanceID: 7848}
     - Class: 114
-      Script: {instanceID: 7898}
+      Script: {instanceID: 7900}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -426,16 +423,16 @@ ScriptsOnlyBuild:
   scriptHashData:
   - hash:
       serializedVersion: 2
-      Hash: 0249933f35dcc970b31eaae0159aebf9
-    assemblyName: UnityEngine.UI
-    namespaceName: UnityEngine.UI
-    className: ContentSizeFitter
-  - hash:
-      serializedVersion: 2
       Hash: 6a356b04c25c0bb008c1b24bf8b0f996
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.UI
     className: CanvasScaler
+  - hash:
+      serializedVersion: 2
+      Hash: 0249933f35dcc970b31eaae0159aebf9
+    assemblyName: UnityEngine.UI
+    namespaceName: UnityEngine.UI
+    className: ContentSizeFitter
   - hash:
       serializedVersion: 2
       Hash: 171be574658ab13f45506c34a719f0f0
@@ -748,6 +745,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnTransformParentChangedMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 69fda586a25feef82da4c6e15d1ac8f7
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: CheckpointN
   - hash:
       serializedVersion: 2
       Hash: f6831ac80ec81c5d5b370c0ed0fee997
@@ -1206,7 +1209,7 @@ ScriptsOnlyBuild:
     className: GroupTrack
   - hash:
       serializedVersion: 2
-      Hash: be81fa33ed7c0fda9d39770b4993f064
+      Hash: 5aafe7882ee39a9714531b1239889317
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: GunController1
@@ -1422,7 +1425,7 @@ ScriptsOnlyBuild:
     className: TMP_TextEventHandler
   - hash:
       serializedVersion: 2
-      Hash: fff1a32deae5d332d9da4054ff9bffa2
+      Hash: 676bcd929ab1bddd93bdf09fa29c6a7b
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: ZombieControl
@@ -1572,7 +1575,7 @@ ScriptsOnlyBuild:
     className: VertexZoom
   - hash:
       serializedVersion: 2
-      Hash: be81fa33ed7c0fda9d39770b4993f064
+      Hash: f818dee4fa504975313394b140de0d2a
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: GunController

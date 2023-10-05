@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class GunController : MonoBehaviour
 {
@@ -19,14 +20,16 @@ public class GunController : MonoBehaviour
     private bool isReloading; // Determines if player is reloading
     public float reloadTime = 1.5f; // Amount of time to reload
 
-    public bool canChamber = false; // Determines if the weapon can chamber a round
-
     [Header("Effects")]
     public ParticleSystem muzzleFlash;
     public ParticleSystem bulletCasing;
     public AudioSource audioSource;
     public AudioClip shootingSoundEffect;
     public TextMeshProUGUI countText;
+    public GameObject ReloadHeader;
+
+    [Header("Miscellaneous")]
+    public bool canChamber = false; // Determines if the weapon can chamber a round
 
     // Start is called before update
     private void Start()
@@ -34,6 +37,7 @@ public class GunController : MonoBehaviour
         currentAmmo = maxAmmo;
         audioSource = GetComponent<AudioSource>();
         countText.text = currentAmmo.ToString();
+        ReloadHeader.SetActive(false);
     }
 
     // Update is called once per frame
@@ -109,6 +113,7 @@ public class GunController : MonoBehaviour
             return;
 
         isReloading = true;
+        ReloadHeader.SetActive(true);
         Debug.Log("Reloading...");
 
         // Add any reloading visual/audio effects here
@@ -123,6 +128,7 @@ public class GunController : MonoBehaviour
 
         // Reset the current ammo to max ammo
         currentAmmo = maxAmmo;
+        ReloadHeader.SetActive(false);
 
         // Chamber an extra round if the ammo count > 0
         if (canChamber && currentAmmo > 0)

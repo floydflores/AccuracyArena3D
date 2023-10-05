@@ -13,6 +13,6 @@ public class MoveUpSlow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(0, 3f,0);
+        transform.Translate(0, 2.6f,0);
     }
 }

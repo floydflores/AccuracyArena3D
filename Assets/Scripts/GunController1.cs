@@ -27,6 +27,7 @@ public class GunController1 : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip shootingSoundEffect;
     public TextMeshProUGUI countText;
+    public GameObject ReloadHeader;
 
     // Start is called before update
     private void Start()
@@ -34,6 +35,7 @@ public class GunController1 : MonoBehaviour
         currentAmmo = maxAmmo;
         audioSource = GetComponent<AudioSource>();
         countText.text = currentAmmo.ToString();
+        ReloadHeader.SetActive(false);
     }
 
     // Update is called once per frame
@@ -110,6 +112,7 @@ public class GunController1 : MonoBehaviour
 
         isReloading = true;
         Debug.Log("Reloading...");
+        ReloadHeader.SetActive(true);
 
         // Add any reloading visual/audio effects here
 
@@ -123,6 +126,7 @@ public class GunController1 : MonoBehaviour
 
         // Reset the current ammo to max ammo
         currentAmmo = maxAmmo;
+        ReloadHeader.SetActive(false);
 
         // Chamber an extra round if the ammo count > 0
         if (canChamber && currentAmmo > 0)

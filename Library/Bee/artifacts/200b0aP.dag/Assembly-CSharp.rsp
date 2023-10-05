@@ -311,6 +311,7 @@
 "Assets/Downloads/Bullet Casing/Scripts/Sound.cs"
 "Assets/Downloads/ModularFirstPersonController/FirstPersonController/FirstPersonController.cs"
 "Assets/Scripts/CharacterCrouch.cs"
+"Assets/Scripts/CheckpointN.cs"
 "Assets/Scripts/DestroyPosition.cs"
 "Assets/Scripts/EndGame.cs"
 "Assets/Scripts/FadeTransition.cs"
